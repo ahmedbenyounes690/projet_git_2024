@@ -1,0 +1,33 @@
+<h1>{{klass |uppercase}} is the best</h1>
+<input type="submit" value="btn" (click)="showMsg()">
+<div [style.backgroundColor]="color">
+    binding
+</div>
+
+<input type="text" [(ngModel)]="color">
+<!--
+<h1>change Color</h1>
+<input type="submit" value="change color" (click)="changeColor()">
+ test-->
+
+ <input type="text" [(ngModel)]="search">
+ <div *ngFor="let p of Products;let j=index ">
+    <div *ngIf="p.name==search || search==''">
+    {{p.name}}
+    {{p.price}}
+    {{p.like}}
+    {{p.dislike}}
+    {{p.quantity}}
+
+    <div *ngIf="p.quantity==0">
+        <input type="submit" value="buy" [disabled]="true">
+    </div>
+    <div *ngIf="p.quantity!=0">
+        <input type="submit" value="buy" [disabled]="false">
+    </div>
+    <input type="submit" value="buy" [disabled]="p.quantity==0">
+    <input type="submit" value="like"(click)="IncreaseLike(p)">
+    <input type="submit" value="dislike"(click)="dislike(j)">
+</div> 
+</div>
+
